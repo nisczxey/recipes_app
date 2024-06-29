@@ -1,0 +1,8 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <style name="Base.Theme.Recipes_app" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+        <item name="fontFamily">@font/poppins</item>
+    </style>
+
+    <style name="Theme.Recipes_app" parent="Base.Theme.Recipes_app" />
+</resources>

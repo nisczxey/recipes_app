@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/navigation_search">
+
+
+    <fragment
+        android:id="@+id/navigation_on_boarding"
+        android:name="com.example.recipes_app.presentation.ui.fragments.onBoarding.OnBoardingFragment"
+        android:label="fragment_on_boarding"
+        tools:layout="@layout/fragment_on_boarding" />
+
+    <fragment
+        android:id="@+id/navigation_search"
+        android:name="com.example.recipes_app.presentation.ui.fragments.search.SearchFragment"
+        android:label="MainFragment"
+        tools:layout="@layout/fragment_search" />
+
+    <fragment
+        android:id="@+id/navigation_cook"
+        android:name="com.example.recipes_app.presentation.ui.fragments.cook.CookFragment"
+        android:label="fragment_cook"
+        tools:layout="@layout/fragment_cook" />
+    <fragment
+        android:id="@+id/navigation_menu_page"
+        android:name="com.example.recipes_app.presentation.ui.fragments.menu.MenuFragment"
+        android:label="fragment_menu"
+        tools:layout="@layout/fragment_menu" />
+    <fragment
+        android:id="@+id/navigation_library"
+        android:name="com.example.recipes_app.presentation.ui.fragments.library.LibraryFragment"
+        android:label="fragment_library"
+        tools:layout="@layout/fragment_library" />
+    <fragment
+        android:id="@+id/navigation_detail_page"
+        android:name="com.example.recipes_app.presentation.ui.fragments.recipes.details.RecipeDetailFragment"
+        android:label="fragment_recipe_detail"
+        tools:layout="@layout/fragment_recipe_detail" />
+    <fragment
+        android:id="@+id/navigation_recipes"
+        android:name="com.example.recipes_app.presentation.ui.fragments.recipes.recipes.RecipesFragment"
+        android:label="fragment_recipes"
+        tools:layout="@layout/fragment_recipes" />
+
+</navigation>
