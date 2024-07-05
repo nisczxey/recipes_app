@@ -6,23 +6,22 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.SearchView
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.recipes_app.R
 import com.example.recipes_app.databinding.FragmentSearchBinding
-import com.example.recipes_app.presentation.model.CategoryUIO
-import com.example.recipes_app.presentation.model.RecipeUIO
 import com.example.recipes_app.presentation.ui.fragments.search.adapters.CategorySliderAdapter
 import com.example.recipes_app.presentation.ui.fragments.search.adapters.RecipesSliderAdapter
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class SearchFragment : Fragment() {
 
-    private val viewModel: SearchViewModel by viewModels()
-
-    private  var _binding: FragmentSearchBinding? = null
+    private var _binding: FragmentSearchBinding? = null
     private val binding: FragmentSearchBinding
-        get() = _binding ?: throw RuntimeException(getString(R.string.binding_in_fragment_main_is_null))
+        get() = _binding
+            ?: throw RuntimeException(getString(R.string.binding_in_fragment_main_is_null))
 
+
+    private val viewModel: SearchViewModel by viewModel<SearchViewModel>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -35,12 +34,13 @@ class SearchFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        viewModel.getAllCategories()
         this.init()
     }
 
-    private fun init(){
+    private fun init() {
         // TODO: implement all recipes RecyclerView
-        binding.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
+        binding.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(finalText: String?): Boolean {
                 // code
                 return true
@@ -52,36 +52,18 @@ class SearchFragment : Fragment() {
             }
 
         })
+
         val layoutManager =
             LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
         binding.mealCategorySlider.layoutManager = layoutManager
         val adapter = CategorySliderAdapter(requireContext())
-        adapter.submitList(listOf(
-            CategoryUIO("","name","https://www.themealdb.com/images/media/meals/1548772327.jpg"),
-            CategoryUIO("","name2","https://www.themealdb.com/images/media/meals/ysxwuq1487323065.jpg"),
-            CategoryUIO("","name3", "https://www.themealdb.com/images/media/meals/uvuyxu1503067369.jpg"),
-            CategoryUIO("","name4","https://www.themealdb.com/images/media/meals/1525873040.jpg"),
-            CategoryUIO("","name","https://www.themealdb.com/images/media/meals/1548772327.jpg"),
-            CategoryUIO("","name2","https://www.themealdb.com/images/media/meals/ysxwuq1487323065.jpg"),
-            CategoryUIO("","name31", "https://www.themealdb.com/images/media/meals/uvuyxu1503067369.jpg"),
-            CategoryUIO("","name41212","https://www.themealdb.com/images/media/meals/1525873040.jpg"),
-            CategoryUIO("","name","https://www.themealdb.com/images/media/meals/1548772327.jpg"),
-            CategoryUIO("","name2","https://www.themealdb.com/images/media/meals/ysxwuq1487323065.jpg"),
-            CategoryUIO("","name32", "https://www.themealdb.com/images/media/meals/uvuyxu1503067369.jpg"),
-            CategoryUIO("","name44","https://www.themealdb.com/images/media/meals/1525873040.jpg"),
-            CategoryUIO("","name","https://www.themealdb.com/images/media/meals/1548772327.jpg"),
-            CategoryUIO("","name2","https://www.themealdb.com/images/media/meals/ysxwuq1487323065.jpg"),
-            CategoryUIO("","name3", "https://www.themealdb.com/images/media/meals/uvuyxu1503067369.jpg"),
-            CategoryUIO("","name423","https://www.themealdb.com/images/media/meals/1525873040.jpg"),
-            CategoryUIO("","name2323232","https://www.themealdb.com/images/media/meals/1548772327.jpg"),
-            CategoryUIO("","name24242","https://www.themealdb.com/images/media/meals/ysxwuq1487323065.jpg"),
-            CategoryUIO("","nam424e3", "https://www.themealdb.com/images/media/meals/uvuyxu1503067369.jpg"),
-            CategoryUIO("","nam2424242424e4","https://www.themealdb.com/images/media/meals/1525873040.jpg")
-
-        ))
-
+        adapter.submitList(emptyList())
 
         binding.mealCategorySlider.adapter = adapter
+
+        viewModel.categoriesLD.observe(viewLifecycleOwner) { categories ->
+            adapter.submitList(categories)
+        }
 
         val layoutManager2 =
             LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
@@ -89,21 +71,9 @@ class SearchFragment : Fragment() {
 
         val recipeAdapter = RecipesSliderAdapter(requireContext())
 
-        recipeAdapter.submitList(listOf(
-            RecipeUIO("","name1sdasjdjasndjsanjdnjasndjsandjkasbdhjasnfbasjndkafnsjfashjbfjasfkjas", "", "", "https://www.themealdb.com/images/media/meals/41cxjh1683207682.jpg","",true),
-            RecipeUIO("","name2", "", "", "https://www.themealdb.com/images/media/meals/xrttsx1487339558.jpg","",true),
-            RecipeUIO("","name3", "", "", "https://www.themealdb.com/images/media/meals/mlchx21564916997.jpg","",true),
-            RecipeUIO("","name4", "", "", "https://www.themealdb.com/images/media/meals/g373701551450225.jpg","",true),
-            RecipeUIO("","name5", "", "", "https://www.themealdb.com/images/media/meals/urtqut1511723591.jpg","",true),
-            RecipeUIO("","name6", "", "", "","",true),
-            RecipeUIO("","name7", "", "", "https://www.themealdb.com/images/media/meals/urtqut1511723591.jpg","",true),
-            RecipeUIO("","name8", "", "", "","",true),
-        ))
+        recipeAdapter.submitList(emptyList())
         binding.mealSlider.adapter = recipeAdapter
 
-        binding.tvViewAll.setOnClickListener {
-
-        }
     }
 
 

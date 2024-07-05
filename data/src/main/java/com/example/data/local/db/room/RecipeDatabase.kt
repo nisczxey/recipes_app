@@ -12,7 +12,7 @@ import com.example.data.local.db.models.RecipeDbModel
 )
 abstract class RecipeDatabase : RoomDatabase() {
 
-    abstract val dao: RecipesDao
+    abstract fun recipeDao(): RecipesDao
 
     companion object {
         fun createDb(context: Context): RecipeDatabase {
