@@ -35,12 +35,12 @@
         tools:layout="@layout/fragment_library" />
     <fragment
         android:id="@+id/navigation_detail_page"
-        android:name="com.example.recipes_app.presentation.ui.fragments.recipes.details.RecipeDetailFragment"
+        android:name="com.example.recipes_app.presentation.ui.fragments.detail.DetailFragment"
         android:label="fragment_recipe_detail"
-        tools:layout="@layout/fragment_recipe_detail" />
+        tools:layout="@layout/fragment_detail" />
     <fragment
         android:id="@+id/navigation_recipes"
-        android:name="com.example.recipes_app.presentation.ui.fragments.recipes.recipes.RecipesFragment"
+        android:name="com.example.recipes_app.presentation.ui.fragments.recipes.RecipesFragment"
         android:label="fragment_recipes"
         tools:layout="@layout/fragment_recipes" />
 

@@ -74,7 +74,7 @@ dependencies {
     implementation(libs.dotsindicator)
 
     // Kotlin Coroutines
-    api(libs.kotlinx.coroutines.core)
-    api(libs.kotlinx.coroutines.android)
+    implementation(libs.kotlinx.coroutines.core)
+    implementation(libs.kotlinx.coroutines.android)
 
 }

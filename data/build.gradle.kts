@@ -48,7 +48,7 @@ dependencies {
     implementation(libs.room.ktx)
     kapt(libs.androidx.room.compiler)
 
-    //
+    //coroutine
     implementation(libs.kotlinx.coroutines.core)
 
 }

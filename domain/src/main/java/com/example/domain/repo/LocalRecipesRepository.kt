@@ -1,6 +1,7 @@
 package com.example.domain.repo
 
 import com.example.domain.model.RecipeEntity
+import com.example.domain.util.Resource
 
 interface LocalRecipesRepository {
 
@@ -12,7 +13,7 @@ interface LocalRecipesRepository {
 
     suspend fun deleteRecipe(recipe: RecipeEntity)
 
-    suspend fun getAllRecipes(): List<RecipeEntity>
+    fun getAllRecipes(): Resource<List<RecipeEntity>>
 
     suspend fun getRecipesOrderedByName(): List<RecipeEntity>
 
