@@ -4,5 +4,6 @@ import com.example.recipes_app.presentation.model.RecipeUIO
 
 data class RecipeItemsState (
     var list: List<RecipeUIO> = emptyList(),
-    val isLoading: Boolean = false
+    val isLoading: Boolean = false,
+    val error: String = ""
 )

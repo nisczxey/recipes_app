@@ -16,7 +16,7 @@ fun ImageView.loadImage(url: String) {
     Glide.with(this).load(url).into(this)
 }
 
-fun View.chooseRandomBackgroundColor(context: Context){
+fun View.chooseRandomBackgroundColor(context: Context) {
     val colorList = listOf(
         context.getColor(R.color.pastel_blue),
         context.getColor(R.color.copper),
@@ -25,4 +25,12 @@ fun View.chooseRandomBackgroundColor(context: Context){
         context.getColor(R.color.pastel_pink)
     )
     this.setBackgroundColor(colorList.random())
+}
+
+fun View.visible() {
+    this.visibility = View.VISIBLE
+}
+
+fun View.inVisible() {
+    this.visibility = View.GONE
 }

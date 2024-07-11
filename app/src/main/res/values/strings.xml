@@ -39,5 +39,7 @@
     <string name="tags">tags:</string>
     <string name="recipe_image">recipe image</string>
     <string name="recipe_ingredient">Recipe, ingredient</string>
+    <string name="something_went_wrong">something went wrong</string>
+    <string name="choose_category">choose category</string>
 
 </resources>

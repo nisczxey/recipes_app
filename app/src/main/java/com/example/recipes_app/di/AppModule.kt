@@ -22,7 +22,8 @@ val appModule = module {
 
     viewModel<SearchViewModel> {
         SearchViewModel(
-            getAllCategoriesUseCase = get()
+            getAllCategoriesUseCase = get(),
+            getLimitedRecipesByCategoryUseCase = get()
         )
     }
     viewModel<LibraryViewModel> {

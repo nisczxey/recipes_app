@@ -61,7 +61,7 @@
                 android:id="@+id/tv_category_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/category"
+                android:text="@string/choose_category"
                 android:textColor="@color/black"
                 android:textSize="26sp" />
 
@@ -71,9 +71,18 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="end|center_vertical"
                 android:text="@string/view_all"
-                android:textColor="@color/black" />
-
+                android:textColor="@color/black"
+                android:visibility="gone"/>
         </FrameLayout>
+
+        <ProgressBar
+            android:id="@+id/progress_bar_recipes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="50dp"
+            android:visibility="gone"
+            />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/meal_slider"
@@ -81,7 +90,9 @@
             android:layout_height="270dp"
             android:layout_marginTop="16dp"
             android:clipChildren="false"
-            android:clipToPadding="false" />
+            android:clipToPadding="false"
+            android:visibility="gone"/>
+
     </LinearLayout>
 
 </ScrollView>
