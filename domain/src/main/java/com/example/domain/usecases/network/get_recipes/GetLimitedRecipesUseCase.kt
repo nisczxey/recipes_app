@@ -1,24 +1,28 @@
 package com.example.domain.usecases.network.get_recipes
 
-import com.example.domain.model.RecipeEntity
 import com.example.domain.repo.NetworkRepository
 import com.example.domain.util.Resource
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.flow
 import java.io.IOException
 
-class GetRecipesByCategoryUseCase(
+class GetLimitedRecipesUseCase(
     private val repository: NetworkRepository
 ) {
 
     operator fun invoke(category: String) =
-        flow<Resource<List<RecipeEntity>>> {
+        flow {
+            emit(Resource.Loading())
             try {
-                emit(Resource.Loading())
                 val recipes = repository.getRecipesByCategory(category)
-                emit(Resource.Success(recipes))
+                val limitedRecipes = recipes.take(LIMIT_COUNT_RECIPES)
+                emit(Resource.Success(limitedRecipes))
             } catch (e: IOException) {
                 throw e
             }
         }
 
+    companion object{
+        const val LIMIT_COUNT_RECIPES = 7
+    }
 }

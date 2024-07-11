@@ -5,19 +5,17 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import androidx.viewpager2.widget.ViewPager2
 import com.example.recipes_app.R
 import com.example.recipes_app.presentation.model.CategoryUIO
 import com.example.recipes_app.presentation.ui.fragments.search.adapters.diffUtil.CategoryItemDiffCallback
-import com.example.recipes_app.presentation.utils.chooseRandomBackgroundColor
 import com.example.recipes_app.presentation.utils.loadImage
 
 class CategorySliderAdapter(
-    private val context: Context
+    private val context: Context,
+    private val onCategoryClick: (String) -> Unit
 ) : ListAdapter<CategoryUIO, CategorySliderAdapter.ViewHolder>(CategoryItemDiffCallback()) {
 
 
@@ -30,6 +28,14 @@ class CategorySliderAdapter(
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.categoryName.text = getItem(position).name
         holder.categoryImg.loadImage(getItem(position).imgUrl)
+
+        holder.itemView.setOnClickListener{
+           onCategoryClick(getItem(position).name)
+        }
+    }
+
+    fun getItemAtPosition(position: Int): CategoryUIO? {
+        return if (position in 0 until itemCount) getItem(position) else null
     }
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {

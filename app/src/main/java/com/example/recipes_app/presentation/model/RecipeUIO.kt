@@ -14,7 +14,8 @@ data class RecipeUIO(
 fun RecipeEntity.toUIO() = RecipeUIO(
     id = id,
     name = name,
-    instructions = instructions,
+    instructions = instructions.toString(),
     area = area,
-    isFavorite = isFavorite
+    isFavorite = isFavorite,
+    imgUrl = img
 )

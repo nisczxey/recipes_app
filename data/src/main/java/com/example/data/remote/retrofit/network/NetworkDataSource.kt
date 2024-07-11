@@ -7,16 +7,13 @@ import retrofit2.converter.gson.GsonConverterFactory
 class NetworkDataSource {
 
     private val retrofit = Retrofit.Builder()
-        .baseUrl(BASE_URL)
+        .baseUrl(BASE_URL_WITH_KEY)
         .addConverterFactory(GsonConverterFactory.create())
         .build()
 
     val recipesApi: RecipesApi = retrofit.create(RecipesApi::class.java)
 
     companion object {
-
-        private const val API_KEY = "1"
-        private const val BASE_URL = "https://www.themealdb.com/api/json/v1/$API_KEY/"
-
+        private const val BASE_URL_WITH_KEY = "https://www.themealdb.com/api/json/v1/1/"
     }
 }

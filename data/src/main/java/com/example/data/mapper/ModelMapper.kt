@@ -9,10 +9,10 @@ import com.example.domain.model.RecipeEntity
 fun RecipeEntity.toRecipeDbModel() = RecipeDbModel(
     id = id,
     name = name,
-    instructions = instructions,
+    instructions = instructions.toString(),
     isFavorite = isFavorite,
-    area = area,
-    category = category
+    area = area.toString(),
+    category = category.toString()
 )
 
 fun RecipeDbModel.toRecipeEntity() = RecipeEntity(
@@ -30,7 +30,8 @@ fun Recipe.toRecipeEntity() = RecipeEntity(
     instructions = instructions,
     isFavorite = false,
     area = area,
-    category = category
+    category = category,
+    img = mealThumbUrl
 )
 
 fun Category.toCategoryEntity() = CategoryEntity(

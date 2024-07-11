@@ -30,7 +30,7 @@ class RecipesSliderAdapter(
 
     override fun onBindViewHolder(holder: RecipesViewHolder, position: Int) {
         holder.name.text = getItem(position).name
-        getItem(position).imgUrl?.let { holder.img.loadImage(it) }
+        getItem(position).imgUrl.let { holder.img.loadImage(it.toString()) }
         holder.cardViewContainer.chooseRandomBackgroundColor(context)
     }
 

@@ -2,6 +2,7 @@ package com.example.domain.repo
 
 import com.example.domain.model.CategoryEntity
 import com.example.domain.model.RecipeEntity
+import kotlinx.coroutines.flow.Flow
 
 interface NetworkRepository {
 
