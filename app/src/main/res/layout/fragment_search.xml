@@ -3,15 +3,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingStart="28dp"
-    android:paddingTop="54dp"
     tools:context=".presentation.ui.fragments.search.SearchFragment"
     tools:ignore="RtlSymmetry">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        >
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingTop="54dp"
+            android:paddingStart="28dp">
 
         <TextView
             android:id="@+id/tv_question"
@@ -34,13 +39,7 @@
             android:inputType="text"
             android:maxWidth="488dp"
             android:queryHint="@string/recipe_ingredient" />
-
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_all_category_recipes"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:visibility="gone" />
+        </LinearLayout>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/meal_category_slider"
@@ -55,7 +54,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
-            android:layout_marginEnd="26dp">
+            android:layout_marginEnd="26dp"
+            android:layout_marginStart="28dp">
 
             <TextView
                 android:id="@+id/tv_category_name"

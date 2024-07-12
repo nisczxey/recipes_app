@@ -16,7 +16,11 @@
         android:id="@+id/navigation_search"
         android:name="com.example.recipes_app.presentation.ui.fragments.search.SearchFragment"
         android:label="MainFragment"
-        tools:layout="@layout/fragment_search" />
+        tools:layout="@layout/fragment_search" >
+        <action
+            android:id="@+id/action_navigation_search_to_navigation_detail_page"
+            app:destination="@id/navigation_detail_page" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_cook"
@@ -37,7 +41,11 @@
         android:id="@+id/navigation_detail_page"
         android:name="com.example.recipes_app.presentation.ui.fragments.detail.DetailFragment"
         android:label="fragment_recipe_detail"
-        tools:layout="@layout/fragment_detail" />
+        tools:layout="@layout/fragment_detail" >
+        <argument
+            android:name="id"
+            app:argType="string" />
+    </fragment>
     <fragment
         android:id="@+id/navigation_recipes"
         android:name="com.example.recipes_app.presentation.ui.fragments.recipes.RecipesFragment"

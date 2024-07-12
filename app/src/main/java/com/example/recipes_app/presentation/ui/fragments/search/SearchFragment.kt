@@ -7,6 +7,8 @@ import android.view.ViewGroup
 import android.widget.SearchView
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.recipes_app.R
 import com.example.recipes_app.databinding.FragmentSearchBinding
@@ -79,7 +81,11 @@ class SearchFragment : Fragment() {
             LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
         binding.mealSlider.layoutManager = layoutManager2
 
-        recipeAdapter = RecipesSliderAdapter(requireContext())
+        recipeAdapter = RecipesSliderAdapter(requireContext()) { id ->
+            findNavController().navigate(
+                SearchFragmentDirections.actionNavigationSearchToNavigationDetailPage(id)
+            )
+        }
 
         binding.mealSlider.adapter = recipeAdapter
 

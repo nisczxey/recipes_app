@@ -34,10 +34,6 @@ class CategorySliderAdapter(
         }
     }
 
-    fun getItemAtPosition(position: Int): CategoryUIO? {
-        return if (position in 0 until itemCount) getItem(position) else null
-    }
-
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val categoryName: TextView = itemView.findViewById(R.id.tv_item_category)
         val categoryImg: ImageView = itemView.findViewById(R.id.img_item_category)

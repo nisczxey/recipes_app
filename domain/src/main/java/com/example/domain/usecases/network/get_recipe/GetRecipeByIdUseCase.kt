@@ -1,13 +1,14 @@
 package com.example.domain.usecases.network.get_recipe
 
+import com.example.domain.model.RecipeEntity
 import com.example.domain.repo.NetworkRepository
 
 class GetRecipeByIdUseCase(
-    val repository: NetworkRepository,
+    private val repository: NetworkRepository,
 ) {
 
-    operator fun invoke(id: String) {
-
+    suspend operator fun invoke(id: String): RecipeEntity {
+        return repository.getRecipeById(id)
     }
 
 }

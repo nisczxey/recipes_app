@@ -16,7 +16,8 @@ import com.example.recipes_app.presentation.utils.chooseRandomBackgroundColor
 import com.example.recipes_app.presentation.utils.loadImage
 
 class RecipesSliderAdapter(
-    private val context: Context
+    private val context: Context,
+    private val onRecipeCLick : (String) -> Unit
 ) : ListAdapter<RecipeUIO, RecipesSliderAdapter.RecipesViewHolder>(
     RecipesItemDiffCallback()
 ) {
@@ -32,12 +33,14 @@ class RecipesSliderAdapter(
         holder.name.text = getItem(position).name
         getItem(position).imgUrl.let { holder.img.loadImage(it.toString()) }
         holder.cardViewContainer.chooseRandomBackgroundColor(context)
+
+        holder.itemView.setOnClickListener { onRecipeCLick(getItem(position).id) }
     }
 
-    inner class RecipesViewHolder(private val itemView: View) : ViewHolder(itemView) {
-        val name: TextView = itemView.findViewById(R.id.item_tv_recipe_name)
-        val img: ImageView = itemView.findViewById(R.id.item_img_recipe)
-        val cardViewContainer: LinearLayout = itemView.findViewById(R.id.cardview_container)
+    inner class RecipesViewHolder(private val view: View) : ViewHolder(view) {
+        val name: TextView = view.findViewById(R.id.item_tv_recipe_name)
+        val img: ImageView = view.findViewById(R.id.item_img_recipe)
+        val cardViewContainer: LinearLayout = view.findViewById(R.id.cardview_container)
     }
 
 }
