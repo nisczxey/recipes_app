@@ -41,13 +41,6 @@
             android:queryHint="@string/recipe_ingredient" />
         </LinearLayout>
 
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_all_category_recipes"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:visibility="gone" />
-
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/meal_category_slider"
             android:layout_width="match_parent"

@@ -21,7 +21,7 @@ fun RecipeDbModel.toRecipeEntity() = RecipeEntity(
     instructions = instructions,
     isFavorite = isFavorite,
     area = area,
-    category = category
+    category = category,
 )
 
 fun Recipe.toRecipeEntity() = RecipeEntity(
@@ -31,7 +31,8 @@ fun Recipe.toRecipeEntity() = RecipeEntity(
     isFavorite = false,
     area = area,
     category = category,
-    img = mealThumbUrl
+    img = mealThumbUrl,
+    youtubeUrl = youtubeUrl
 )
 
 fun Category.toCategoryEntity() = CategoryEntity(

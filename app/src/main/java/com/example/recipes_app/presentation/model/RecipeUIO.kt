@@ -6,9 +6,11 @@ data class RecipeUIO(
     val id: String,
     val name: String,
     val instructions: String,
+    val category: String,
     val area: String? = null,
     val imgUrl: String? = null,
-    val isFavorite: Boolean? = null
+    val isFavorite: Boolean? = null,
+    val videoUrl: String? = null
 )
 
 fun RecipeEntity.toUIO() = RecipeUIO(
@@ -17,5 +19,7 @@ fun RecipeEntity.toUIO() = RecipeUIO(
     instructions = instructions.toString(),
     area = area,
     isFavorite = isFavorite,
-    imgUrl = img
+    imgUrl = img,
+    category = category.toString(),
+    videoUrl = youtubeUrl
 )
