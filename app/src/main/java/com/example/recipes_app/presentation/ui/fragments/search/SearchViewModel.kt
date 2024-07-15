@@ -11,7 +11,6 @@ import com.example.recipes_app.presentation.model.CategoryUIO
 import com.example.recipes_app.presentation.model.states.RecipeItemsState
 import com.example.recipes_app.presentation.model.toUIO
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
