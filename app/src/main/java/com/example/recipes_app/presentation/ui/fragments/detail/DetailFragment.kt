@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
 import com.example.recipes_app.R
 import com.example.recipes_app.databinding.FragmentDetailBinding
+import com.example.recipes_app.presentation.model.RecipeUIO
 import com.example.recipes_app.presentation.utils.loadImage
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -33,16 +34,18 @@ class DetailFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         viewModel.getRecipe(args.id)
         viewModel.ld.observe(viewLifecycleOwner) { data ->
-            with(binding) {
-                tvName.text = data.name
-                val areaText = tvArea.text.toString() + " " + data.area.toString()
-                tvArea.text =  areaText
-                val categoryText = tvCategory.text.toString() + " " + data.category
-                tvCategory.text = categoryText
-                tvInstructions.text = data.instructions
-                imgRecipe.loadImage(data.imgUrl.toString())
-            }
+            showData(data)
         }
+    }
+
+    private fun showData(data: RecipeUIO) = with(binding) {
+        tvName.text = data.name
+        val areaText = tvArea.text.toString() + " " + data.area.toString()
+        tvArea.text = areaText
+        val categoryText = tvCategory.text.toString() + " " + data.category
+        tvCategory.text = categoryText
+        tvInstructions.text = data.instructions
+        imgRecipe.loadImage(data.imgUrl.toString())
     }
 
     override fun onDestroy() {
