@@ -5,9 +5,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView.Adapter
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
+import coil.load
 import com.example.recipes_app.databinding.ItemOnBoardingBinding
 import com.example.recipes_app.presentation.model.OnBoarding
-import com.example.recipes_app.presentation.utils.loadImage
 
 class OnBoardingAdapter(private val onClick: () -> Unit)
     : Adapter<OnBoardingAdapter.OnBoardingViewHolder>() {
@@ -50,7 +50,7 @@ class OnBoardingAdapter(private val onClick: () -> Unit)
     inner class OnBoardingViewHolder(private val binding: ItemOnBoardingBinding) :
         ViewHolder(binding.root) {
         fun bind(onBoarding: OnBoarding) {
-            binding.boardingImage.loadImage(onBoarding.image)
+            binding.boardingImage.load(onBoarding.image)
             binding.boardingTvTitle.text = onBoarding.title
             binding.boardingTvDesc.text = onBoarding.text
 

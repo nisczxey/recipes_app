@@ -8,10 +8,10 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import coil.load
 import com.example.recipes_app.R
 import com.example.recipes_app.presentation.model.CategoryUIO
 import com.example.recipes_app.presentation.ui.fragments.search.adapters.diffUtil.CategoryItemDiffCallback
-import com.example.recipes_app.presentation.utils.loadImage
 
 class CategorySliderAdapter(
     private val context: Context,
@@ -27,7 +27,7 @@ class CategorySliderAdapter(
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.categoryName.text = getItem(position).name
-        holder.categoryImg.loadImage(getItem(position).imgUrl)
+        holder.categoryImg.load(getItem(position).imgUrl)
 
         holder.itemView.setOnClickListener{
            onCategoryClick(getItem(position).name)
