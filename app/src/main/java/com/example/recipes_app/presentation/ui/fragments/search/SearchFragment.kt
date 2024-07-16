@@ -13,6 +13,7 @@ import com.example.recipes_app.R
 import com.example.recipes_app.databinding.FragmentSearchBinding
 import com.example.recipes_app.presentation.ui.fragments.search.adapters.CategorySliderAdapter
 import com.example.recipes_app.presentation.ui.fragments.search.adapters.RecipesSliderAdapter
+import com.example.recipes_app.presentation.ui.fragments.search.bottom_sheet.ModalBottomSheetDialog
 import com.example.recipes_app.presentation.utils.inVisible
 import com.example.recipes_app.presentation.utils.showToast
 import com.example.recipes_app.presentation.utils.visible
@@ -47,6 +48,13 @@ class SearchFragment : Fragment() {
     }
 
     private fun init() {
+
+        binding.tvViewAll.setOnClickListener {
+            val modalBottomSheet = ModalBottomSheetDialog()
+            parentFragmentManager.let {
+                modalBottomSheet.show(it, ModalBottomSheetDialog.TAG)
+            }
+        }
 
         binding.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(finalText: String?): Boolean {
