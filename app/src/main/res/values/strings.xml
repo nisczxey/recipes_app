@@ -44,5 +44,6 @@
     <string name="fragment_detail_binding_is_null">fragment detail binding is null</string>
     <string name="recipe">Recipe</string>
     <string name="instructions">instructions</string>
+    <string name="binding_in_modalBottomSheet_is_null">binding in Modal bottom Sheet is null</string>
 
 </resources>
