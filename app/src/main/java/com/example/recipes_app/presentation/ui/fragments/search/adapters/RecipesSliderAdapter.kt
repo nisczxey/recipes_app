@@ -9,11 +9,11 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
+import coil.load
 import com.example.recipes_app.R
 import com.example.recipes_app.presentation.model.RecipeUIO
 import com.example.recipes_app.presentation.ui.fragments.search.adapters.diffUtil.RecipesItemDiffCallback
 import com.example.recipes_app.presentation.utils.chooseRandomBackgroundColor
-import com.example.recipes_app.presentation.utils.loadImage
 
 class RecipesSliderAdapter(
     private val context: Context,
@@ -31,7 +31,7 @@ class RecipesSliderAdapter(
 
     override fun onBindViewHolder(holder: RecipesViewHolder, position: Int) {
         holder.name.text = getItem(position).name
-        getItem(position).imgUrl.let { holder.img.loadImage(it.toString()) }
+        getItem(position).imgUrl.let { holder.img.load(it.toString()) }
         holder.cardViewContainer.chooseRandomBackgroundColor(context)
 
         holder.itemView.setOnClickListener { onRecipeCLick(getItem(position).id) }

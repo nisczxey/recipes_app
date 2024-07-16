@@ -65,8 +65,8 @@ dependencies {
     implementation(libs.koin.core)
     implementation(libs.koin.android)
 
-    //Glide
-    implementation (libs.glide)
+    //Coil
+    implementation(libs.coil)
 
     //ViewPager2
     implementation(libs.androidx.viewpager2)

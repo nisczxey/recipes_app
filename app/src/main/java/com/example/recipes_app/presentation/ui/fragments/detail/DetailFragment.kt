@@ -6,10 +6,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
+import coil.load
 import com.example.recipes_app.R
 import com.example.recipes_app.databinding.FragmentDetailBinding
 import com.example.recipes_app.presentation.model.RecipeUIO
-import com.example.recipes_app.presentation.utils.loadImage
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class DetailFragment : Fragment() {
@@ -45,7 +45,7 @@ class DetailFragment : Fragment() {
         val categoryText = tvCategory.text.toString() + " " + data.category
         tvCategory.text = categoryText
         tvInstructions.text = data.instructions
-        imgRecipe.loadImage(data.imgUrl.toString())
+        imgRecipe.load(data.imgUrl.toString())
     }
 
     override fun onDestroy() {
