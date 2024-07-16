@@ -37,13 +37,13 @@ class ModalBottomSheetDialog : BottomSheetDialogFragment() {
         bottomSheet.layoutParams.height = ViewGroup.LayoutParams.MATCH_PARENT
         val behavior = BottomSheetBehavior.from(bottomSheet)
         behavior.apply {
-            peekHeight = resources.displayMetrics.heightPixels
+            peekHeight = resources.displayMetrics.widthPixels
             state = BottomSheetBehavior.STATE_EXPANDED
         }
     }
 
     companion object {
-        const val TAG = "BottomSheetDialog"
+        const val BOTTOM_TAG = "BottomSheetDialog"
     }
 
 }

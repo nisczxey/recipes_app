@@ -52,7 +52,7 @@ class SearchFragment : Fragment() {
         binding.tvViewAll.setOnClickListener {
             val modalBottomSheet = ModalBottomSheetDialog()
             parentFragmentManager.let {
-                modalBottomSheet.show(it, ModalBottomSheetDialog.TAG)
+                modalBottomSheet.show(it, ModalBottomSheetDialog.BOTTOM_TAG)
             }
         }
 
