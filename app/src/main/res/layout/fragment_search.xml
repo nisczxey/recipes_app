@@ -41,6 +41,14 @@
             android:queryHint="@string/recipe_ingredient" />
         </LinearLayout>
 
+        <ProgressBar
+            android:id="@+id/main_progress_bar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="16dp"
+            android:visibility="gone"/>
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/meal_category_slider"
             android:layout_width="match_parent"
