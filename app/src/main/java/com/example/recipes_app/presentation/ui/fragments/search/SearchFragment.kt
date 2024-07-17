@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.SearchView
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
@@ -56,19 +55,6 @@ class SearchFragment : Fragment() {
             }
         }
 
-        binding.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
-            override fun onQueryTextSubmit(finalText: String?): Boolean {
-                // code
-                return true
-            }
-
-            override fun onQueryTextChange(text: String?): Boolean {
-                // code
-                return true
-            }
-
-        })
-
         val layoutManager =
             LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
         binding.mealCategorySlider.layoutManager = layoutManager
@@ -80,8 +66,26 @@ class SearchFragment : Fragment() {
 
         binding.mealCategorySlider.adapter = categoryAdapter
 
-        viewModel.categoriesLD.observe(viewLifecycleOwner) { categories ->
-            categoryAdapter.submitList(categories)
+        viewModel.categoryStateLD.observe(viewLifecycleOwner) { result ->
+            with(binding) {
+                if (result.isLoading) {
+                    if (mealCategorySlider.isVisible) {
+                        mealSlider.inVisible()
+                        mainProgressBar.visible()
+                        tvCategoryName.inVisible()
+                    }
+                } else {
+                    if (result.error.isNotBlank()) {
+                        showToast(getString(R.string.something_went_wrong))
+                    } else {
+                        categoryAdapter.submitList(result.list)
+                        mainProgressBar.inVisible()
+                        tvCategoryName.visible()
+                        mealCategorySlider.visible()
+                    }
+                }
+
+            }
         }
 
         val layoutManager2 =
