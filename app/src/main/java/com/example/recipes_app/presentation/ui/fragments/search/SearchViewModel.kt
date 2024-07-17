@@ -7,38 +7,45 @@ import androidx.lifecycle.viewModelScope
 import com.example.domain.usecases.network.get_categories.GetAllCategoriesUseCase
 import com.example.domain.usecases.network.get_recipes.GetLimitedRecipesUseCase
 import com.example.domain.util.Resource
-import com.example.recipes_app.presentation.model.CategoryUIO
+import com.example.recipes_app.presentation.model.states.CategoryItemsState
 import com.example.recipes_app.presentation.model.states.RecipeItemsState
 import com.example.recipes_app.presentation.model.toUIO
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 
 class SearchViewModel(
     private val getAllCategoriesUseCase: GetAllCategoriesUseCase,
     private val getLimitedRecipesByCategoryUseCase: GetLimitedRecipesUseCase
 ) : ViewModel() {
 
-    private val _categoriesLD: MutableLiveData<List<CategoryUIO>> = MutableLiveData(emptyList())
-    val categoriesLD: LiveData<List<CategoryUIO>> = _categoriesLD
+    private val _categoryStateLD = MutableLiveData<CategoryItemsState>()
+    val categoryStateLD: LiveData<CategoryItemsState> = _categoryStateLD
 
     private val _recipesStateLD = MutableLiveData<RecipeItemsState>()
     val recipesStateLD: LiveData<RecipeItemsState> = _recipesStateLD
 
-    private lateinit var categoryList: List<CategoryUIO>
-
-
     fun getAllCategories() {
-        viewModelScope.launch(Dispatchers.IO) {
-            categoryList = getAllCategoriesUseCase().map {
-                it.toUIO()
+        getAllCategoriesUseCase().onEach { result ->
+            when (result) {
+                is Resource.Error -> {
+                    _categoryStateLD.value = CategoryItemsState(
+                        error = result.msg.toString()
+                    )
+                }
+
+                is Resource.Loading -> {
+                    _categoryStateLD.value = CategoryItemsState(
+                        isLoading = true
+                    )
+                }
+
+                is Resource.Success -> {
+                    _categoryStateLD.value = CategoryItemsState(
+                        list = result.data?.map { it.toUIO() } ?: emptyList()
+                    )
+                }
             }
-            withContext(Dispatchers.Main) {
-                _categoriesLD.value = categoryList
-            }
-        }
+        }.launchIn(viewModelScope)
     }
 
     fun getLimitedRecipesByCategory(category: String) {
@@ -49,6 +56,7 @@ class SearchViewModel(
                         list = result.data?.map { it.toUIO() } ?: emptyList()
                     )
                 }
+
                 is Resource.Error -> {
                     _recipesStateLD.value = RecipeItemsState(
                         error = result.msg.toString()

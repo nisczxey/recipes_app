@@ -1,16 +1,23 @@
 package com.example.domain.usecases.network.get_categories
 
-import com.example.domain.model.CategoryEntity
 import com.example.domain.repo.NetworkRepository
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.withContext
+import com.example.domain.util.Resource
+import kotlinx.coroutines.flow.flow
+import java.io.IOException
 
 class GetAllCategoriesUseCase(
-    private  val repository: NetworkRepository
+    private val repository: NetworkRepository
 ) {
 
-    suspend operator fun invoke(): List<CategoryEntity> {
-        return repository.getAllCategories()
+    operator fun invoke() = flow {
+        emit(Resource.Loading())
+        try {
+            val categories = repository.getAllCategories()
+            emit(Resource.Success(categories))
+        } catch (e: IOException) {
+            emit(Resource.Error(msg = e.toString()))
+            throw e
+        }
     }
 
 }
