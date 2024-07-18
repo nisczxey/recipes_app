@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="dimen_image_detail_height">250dp</dimen>
+    <dimen name="_77dp_item_library_height">77dp</dimen>
 </resources>
