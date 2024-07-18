@@ -25,8 +25,7 @@ class LibraryViewModel(
     fun getAllRecipes() {
         getRecipesJob?.cancel()
         getRecipesJob = viewModelScope.launch(Dispatchers.IO) {
-            var list: List<RecipeUIO> = emptyList()
-            list = getSavedRecipesUseCase().map { it.toUIO() }
+            val list: List<RecipeUIO> = getSavedRecipesUseCase().map { it.toUIO() }
             withContext(Dispatchers.Main) {
                 _recipesLiveData.value = list.let {
                     recipesLiveData.value?.copy(
@@ -36,7 +35,6 @@ class LibraryViewModel(
                 }
             }
         }
-
     }
 
 }
