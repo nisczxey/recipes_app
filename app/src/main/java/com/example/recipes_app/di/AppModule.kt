@@ -1,6 +1,7 @@
 package com.example.recipes_app.di
 
 import com.example.recipes_app.presentation.ui.MainActivityViewModel
+import com.example.recipes_app.presentation.ui.fragments.cook.CookViewModel
 import com.example.recipes_app.presentation.ui.fragments.detail.DetailViewModel
 import com.example.recipes_app.presentation.ui.fragments.library.LibraryViewModel
 import com.example.recipes_app.presentation.ui.fragments.onBoarding.OnBoardingViewModel
@@ -34,5 +35,9 @@ val appModule = module {
     }
     viewModel<DetailViewModel>{
         DetailViewModel(getRecipeByIdUseCase = get())
+    }
+
+    viewModel<CookViewModel>{
+        CookViewModel(getRandomRecipeUseCase = get())
     }
 }
