@@ -4,6 +4,7 @@ import com.example.domain.usecases.local.boarding.IsBoardingShownUseCase
 import com.example.domain.usecases.local.boarding.OnBoardingShowedUseCase
 import com.example.domain.usecases.local.get_recipes.GetAllSavedRecipesUseCase
 import com.example.domain.usecases.network.get_categories.GetAllCategoriesUseCase
+import com.example.domain.usecases.network.get_recipe.GetRandomRecipeUseCase
 import com.example.domain.usecases.network.get_recipe.GetRecipeByIdUseCase
 import com.example.domain.usecases.network.get_recipes.GetAllRecipesUseCase
 import com.example.domain.usecases.network.get_recipes.GetLimitedRecipesUseCase
@@ -42,6 +43,10 @@ val domainModule = module {
 
     factory<GetLimitedRecipesUseCase> {
         GetLimitedRecipesUseCase(get())
+    }
+
+    factory<GetRandomRecipeUseCase> {
+        GetRandomRecipeUseCase(get())
     }
 
 }
