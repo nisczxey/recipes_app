@@ -33,8 +33,15 @@ class DetailFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel.getRecipe(args.id)
+        init()
         viewModel.ld.observe(viewLifecycleOwner) { data ->
             showData(data)
+        }
+    }
+
+    private fun init() {
+        binding.btnSave.setOnClickListener {
+            viewModel.saveRecipe(args.id)
         }
     }
 

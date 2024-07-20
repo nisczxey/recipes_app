@@ -34,24 +34,20 @@ class LibraryFragment : Fragment() {
     }
 
 
-    private fun init(){
+    private fun init() {
 
         val adapter = LibraryListAdapter()
 
         binding.rvLibraryList.adapter = adapter
 
-        viewModel.recipesLiveData.observe(viewLifecycleOwner){ data ->
-            if (data.isLoading){
+        viewModel.recipesLiveData.observe(viewLifecycleOwner) { data ->
+            if (data.isLoading) {
                 showToast("loading")
-            } else{
-                if (data.error.isNotBlank()){
+            } else {
+                if (data.error.isNotBlank()) {
                     showToast("error")
-                } else{
-                    if (data.list.isNotEmpty()){
+                } else {
                     adapter.submitList(data.list)
-                    } else{
-                        showToast("Library List is empty")
-                    }
                 }
             }
         }

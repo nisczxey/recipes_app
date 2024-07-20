@@ -4,6 +4,7 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
@@ -17,7 +18,8 @@ import com.example.recipes_app.presentation.utils.chooseRandomBackgroundColor
 
 class RecipesSliderAdapter(
     private val context: Context,
-    private val onRecipeCLick : (String) -> Unit
+    private val onRecipeCLick : (String) -> Unit,
+    private val onSaveClick : (String) -> Unit,
 ) : ListAdapter<RecipeUIO, RecipesSliderAdapter.RecipesViewHolder>(
     RecipesItemDiffCallback()
 ) {
@@ -35,11 +37,15 @@ class RecipesSliderAdapter(
         holder.cardViewContainer.chooseRandomBackgroundColor(context)
 
         holder.itemView.setOnClickListener { onRecipeCLick(getItem(position).id) }
+        holder.btnOpen.setOnClickListener { onRecipeCLick(getItem(position).id) }
+        holder.btnSave.setOnClickListener { onSaveClick(getItem(position).id) }
     }
 
     inner class RecipesViewHolder(private val view: View) : ViewHolder(view) {
         val name: TextView = view.findViewById(R.id.item_tv_recipe_name)
         val img: ImageView = view.findViewById(R.id.item_img_recipe)
+        val btnSave: Button = view.findViewById(R.id.btn_save)
+        val btnOpen: Button = view.findViewById(R.id.btn_open)
         val cardViewContainer: LinearLayout = view.findViewById(R.id.cardview_container)
     }
 

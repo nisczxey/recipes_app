@@ -1,13 +1,11 @@
 package com.example.data.repo
 
-import android.util.Log
 import com.example.data.mapper.toCategoryEntity
 import com.example.data.mapper.toRecipeEntity
 import com.example.data.remote.retrofit.network.NetworkDataSource
 import com.example.domain.model.CategoryEntity
 import com.example.domain.model.RecipeEntity
 import com.example.domain.repo.NetworkRepository
-import kotlinx.coroutines.flow.Flow
 
 class NetworkRepositoryImpl(
     val network: NetworkDataSource
@@ -41,7 +39,6 @@ class NetworkRepositoryImpl(
 
     override suspend fun getRecipesByCategory(category: String): List<RecipeEntity> {
         return network.recipesApi.filterMealsByCategory(category).recipes.map {
-            Log.e("taga", "getRecipesByCategory:$it $")
             it.toRecipeEntity()
         }
     }

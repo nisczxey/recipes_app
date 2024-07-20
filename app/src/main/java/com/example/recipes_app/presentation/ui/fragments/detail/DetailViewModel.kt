@@ -4,13 +4,15 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.domain.usecases.local.save_recipe.SaveRecipeUseCase
 import com.example.domain.usecases.network.get_recipe.GetRecipeByIdUseCase
 import com.example.recipes_app.presentation.model.RecipeUIO
 import com.example.recipes_app.presentation.model.toUIO
 import kotlinx.coroutines.launch
 
 class DetailViewModel(
-    private val getRecipeByIdUseCase: GetRecipeByIdUseCase
+    private val getRecipeByIdUseCase: GetRecipeByIdUseCase,
+    private val saveRecipeUseCase: SaveRecipeUseCase
 ) : ViewModel() {
 
     val _ld: MutableLiveData<RecipeUIO> = MutableLiveData()
@@ -20,6 +22,12 @@ class DetailViewModel(
     fun getRecipe(id: String) {
         viewModelScope.launch {
            _ld.value = getRecipeByIdUseCase(id).toUIO()
+        }
+    }
+
+    fun saveRecipe(id: String){
+        viewModelScope.launch {
+            saveRecipeUseCase(id)
         }
     }
 }

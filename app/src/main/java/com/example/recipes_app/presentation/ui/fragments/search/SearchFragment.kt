@@ -92,11 +92,17 @@ class SearchFragment : Fragment() {
             LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
         binding.mealSlider.layoutManager = layoutManager2
 
-        recipeAdapter = RecipesSliderAdapter(requireContext()) { id ->
+        val lambda = fun (id: String){
             findNavController().navigate(
                 SearchFragmentDirections.actionNavigationSearchToNavigationDetailPage(id)
             )
         }
+        val labmda2 = fun(id:String){
+            viewModel.saveRecipe(id)
+
+        }
+
+        recipeAdapter = RecipesSliderAdapter(requireContext(), lambda,labmda2)
 
         binding.mealSlider.adapter = recipeAdapter
 

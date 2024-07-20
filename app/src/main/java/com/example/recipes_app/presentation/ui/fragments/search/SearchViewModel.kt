@@ -1,9 +1,11 @@
 package com.example.recipes_app.presentation.ui.fragments.search
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.domain.usecases.local.save_recipe.SaveRecipeUseCase
 import com.example.domain.usecases.network.get_categories.GetAllCategoriesUseCase
 import com.example.domain.usecases.network.get_recipes.GetLimitedRecipesUseCase
 import com.example.domain.util.Resource
@@ -12,10 +14,12 @@ import com.example.recipes_app.presentation.model.states.RecipeItemsState
 import com.example.recipes_app.presentation.model.toUIO
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
+import kotlinx.coroutines.launch
 
 class SearchViewModel(
     private val getAllCategoriesUseCase: GetAllCategoriesUseCase,
-    private val getLimitedRecipesByCategoryUseCase: GetLimitedRecipesUseCase
+    private val getLimitedRecipesByCategoryUseCase: GetLimitedRecipesUseCase,
+    private val saveUseCase: SaveRecipeUseCase,
 ) : ViewModel() {
 
     private val _categoryStateLD = MutableLiveData<CategoryItemsState>()
@@ -23,6 +27,7 @@ class SearchViewModel(
 
     private val _recipesStateLD = MutableLiveData<RecipeItemsState>()
     val recipesStateLD: LiveData<RecipeItemsState> = _recipesStateLD
+
 
     fun getAllCategories() {
         getAllCategoriesUseCase().onEach { result ->
@@ -70,6 +75,12 @@ class SearchViewModel(
                 }
             }
         }.launchIn(viewModelScope)
+    }
+
+    fun saveRecipe(id: String) {
+        viewModelScope.launch {
+            saveUseCase(id)
+        }
     }
 
 }
