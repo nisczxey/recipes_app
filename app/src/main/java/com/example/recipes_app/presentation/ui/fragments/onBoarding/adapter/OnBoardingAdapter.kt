@@ -5,28 +5,26 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView.Adapter
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
-import coil.load
+import com.example.recipes_app.R
 import com.example.recipes_app.databinding.ItemOnBoardingBinding
 import com.example.recipes_app.presentation.model.OnBoarding
 
 class OnBoardingAdapter(private val onClick: () -> Unit)
     : Adapter<OnBoardingAdapter.OnBoardingViewHolder>() {
 
-    val data = arrayListOf(
+    val data = listOf(
         OnBoarding(
-            "https://i.pinimg.com/564x/f3/b8/77/f3b877c9784fdaefa4ff22bf06958348.jpg",
-            "title 1",
-            "desc 1"
+            R.raw.welcome_lottie,
+            "Welcome"
         ),
         OnBoarding(
-            "https://i.pinimg.com/564x/8f/2e/1f/8f2e1f05972fa37ab9657e89cbd5a7ec.jpg",
-            "title 2",
-            "desc 2"
+            R.raw.lottie_second,
+            "Recipes",
+            "Here you can find interesting recipes"
         ),
         OnBoarding(
-            "https://i.pinimg.com/564x/ee/4a/f0/ee4af034b392877cf96b8e180ea724d1.jpg",
-            "title 3",
-            "desc 3"
+            R.raw.lottie_have_fun,
+            "Have fun!"
         )
     )
 
@@ -50,7 +48,7 @@ class OnBoardingAdapter(private val onClick: () -> Unit)
     inner class OnBoardingViewHolder(private val binding: ItemOnBoardingBinding) :
         ViewHolder(binding.root) {
         fun bind(onBoarding: OnBoarding) {
-            binding.boardingImage.load(onBoarding.image)
+            binding.boardingImage.setAnimation(onBoarding.image)
             binding.boardingTvTitle.text = onBoarding.title
             binding.boardingTvDesc.text = onBoarding.text
 
