@@ -25,7 +25,8 @@ val appModule = module {
     viewModel<SearchViewModel> {
         SearchViewModel(
             getAllCategoriesUseCase = get(),
-            getLimitedRecipesByCategoryUseCase = get()
+            getLimitedRecipesByCategoryUseCase = get(),
+            saveUseCase = get()
         )
     }
     viewModel<LibraryViewModel> {
@@ -34,7 +35,8 @@ val appModule = module {
         )
     }
     viewModel<DetailViewModel>{
-        DetailViewModel(getRecipeByIdUseCase = get())
+        DetailViewModel(getRecipeByIdUseCase = get(),
+            saveRecipeUseCase = get())
     }
 
     viewModel<CookViewModel>{

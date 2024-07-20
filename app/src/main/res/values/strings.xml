@@ -46,5 +46,8 @@
     <string name="instructions">instructions</string>
     <string name="binding_in_modalBottomSheet_is_null">binding in Modal bottom Sheet is null</string>
     <string name="status">status:</string>
+    <string name="save_recipe_button">save recipe button</string>
+    <string name="save">save</string>
+    <string name="open">open</string>
 
 </resources>

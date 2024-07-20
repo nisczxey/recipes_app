@@ -8,5 +8,6 @@
     <color name="lemon_meringue">#F8E8C4</color>
     <color name="pastel_pink">#F0AF9E</color>
     <color name="copper">#E48364</color>
+    <color name="btn_recipe_item_color">#ffbd03</color>
 
 </resources>
