@@ -28,11 +28,6 @@
         android:label="fragment_cook"
         tools:layout="@layout/fragment_cook" />
     <fragment
-        android:id="@+id/navigation_menu_page"
-        android:name="com.example.recipes_app.presentation.ui.fragments.menu.MenuFragment"
-        android:label="fragment_menu"
-        tools:layout="@layout/fragment_menu" />
-    <fragment
         android:id="@+id/navigation_library"
         android:name="com.example.recipes_app.presentation.ui.fragments.library.LibraryFragment"
         android:label="fragment_library"
@@ -46,10 +41,5 @@
             android:name="id"
             app:argType="string" />
     </fragment>
-    <fragment
-        android:id="@+id/navigation_recipes"
-        android:name="com.example.recipes_app.presentation.ui.fragments.recipes.RecipesFragment"
-        android:label="fragment_recipes"
-        tools:layout="@layout/fragment_recipes" />
 
 </navigation>

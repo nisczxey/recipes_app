@@ -36,8 +36,7 @@ class MainActivity : AppCompatActivity() {
             setOf(
                 R.id.navigation_search,
                 R.id.navigation_library,
-                R.id.navigation_cook,
-                R.id.navigation_menu_page
+                R.id.navigation_cook
             )
         )
         navController.addOnDestinationChangedListener { _, destination, _ ->

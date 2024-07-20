@@ -12,9 +12,4 @@
         android:id="@+id/navigation_cook"
         android:title="@string/cook_now"
         android:icon="@drawable/icon_cook"/>
-
-    <item
-        android:id="@+id/navigation_menu_page"
-        android:title="@string/menu"
-        android:icon="@drawable/icon_menu"/>
 </menu>
