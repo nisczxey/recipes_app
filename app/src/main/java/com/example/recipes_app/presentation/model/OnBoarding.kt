@@ -1,7 +1,7 @@
 package com.example.recipes_app.presentation.model
 
 data class OnBoarding(
-    val image: String,
+    val image: Int,
     val title: String,
-    val text: String
+    val text: String? = null
 )
