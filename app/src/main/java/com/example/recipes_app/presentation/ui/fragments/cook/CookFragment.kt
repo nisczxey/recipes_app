@@ -5,7 +5,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
+import coil.load
 import com.example.recipes_app.databinding.FragmentCookBinding
+import com.example.recipes_app.presentation.utils.visible
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class CookFragment : Fragment() {
@@ -31,10 +34,19 @@ class CookFragment : Fragment() {
     private fun init() {
         viewModel.stateLD.observe(viewLifecycleOwner) { data ->
             binding.tvRecipeCook.text = data.name
+            binding.imgRecipe.load(data.imgUrl)
+            binding.btnOpen.visible()
+
+            binding.btnOpen.setOnClickListener {
+                findNavController().navigate(
+                    CookFragmentDirections.actionNavigationCookToNavigationDetailPage(data.id)
+                )
+            }
         }
         binding.btnCook.setOnClickListener {
             viewModel.getRandomRecipe()
         }
+
     }
 
     override fun onDestroyView() {

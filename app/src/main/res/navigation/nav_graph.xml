@@ -26,7 +26,11 @@
         android:id="@+id/navigation_cook"
         android:name="com.example.recipes_app.presentation.ui.fragments.cook.CookFragment"
         android:label="fragment_cook"
-        tools:layout="@layout/fragment_cook" />
+        tools:layout="@layout/fragment_cook" >
+        <action
+            android:id="@+id/action_navigation_cook_to_navigation_detail_page"
+            app:destination="@id/navigation_detail_page" />
+    </fragment>
     <fragment
         android:id="@+id/navigation_library"
         android:name="com.example.recipes_app.presentation.ui.fragments.library.LibraryFragment"
