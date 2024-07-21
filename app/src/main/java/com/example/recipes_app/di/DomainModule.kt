@@ -2,6 +2,7 @@ package com.example.recipes_app.di
 
 import com.example.domain.usecases.local.boarding.IsBoardingShownUseCase
 import com.example.domain.usecases.local.boarding.OnBoardingShowedUseCase
+import com.example.domain.usecases.local.create_recipe.CreateRecipeUseCase
 import com.example.domain.usecases.local.get_recipes.GetAllSavedRecipesUseCase
 import com.example.domain.usecases.local.save_recipe.SaveRecipeUseCase
 import com.example.domain.usecases.network.get_categories.GetAllCategoriesUseCase
@@ -52,6 +53,9 @@ val domainModule = module {
 
     factory<SaveRecipeUseCase> {
         SaveRecipeUseCase(repo = get(), getRecipeFromNetworkUseCase = get())
+    }
+    factory<CreateRecipeUseCase> {
+        CreateRecipeUseCase(get())
     }
 
 }
