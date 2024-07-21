@@ -50,5 +50,10 @@
     <string name="save">save</string>
     <string name="open">open</string>
     <string name="no_idea">if you have no idea what you want to cook - use it</string>
+    <string name="createrecipebinding_is_null">CreateRecipeBinding is null</string>
+    <string name="creating_your_recipe">Creating your recipe</string>
+    <string name="recipe_name">Recipe name</string>
+    <string name="create">create</string>
+    <string name="add_image">add image</string>
 
 </resources>

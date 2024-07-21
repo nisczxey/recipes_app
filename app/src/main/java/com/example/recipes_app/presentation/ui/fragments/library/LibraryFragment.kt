@@ -5,8 +5,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.recipes_app.R
 import com.example.recipes_app.databinding.FragmentLibraryBinding
 import com.example.recipes_app.presentation.ui.fragments.library.adapter.LibraryListAdapter
 import com.example.recipes_app.presentation.ui.fragments.library.adapter.decoration.RecipeItemDecoration
@@ -40,6 +42,10 @@ class LibraryFragment : Fragment() {
 
     private fun init() {
 
+        binding.fabBtn.setOnClickListener {
+            findNavController().navigate(R.id.createRecipeFragment)
+        }
+
         val adapter = LibraryListAdapter()
 
         binding.rvLibraryList.adapter = adapter
@@ -71,7 +77,6 @@ class LibraryFragment : Fragment() {
                 viewModel.getAllRecipes()
                 swipeRefreshLayout.isRefreshing = false
             }
-
         }
     }
 
