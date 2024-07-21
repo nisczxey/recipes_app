@@ -4,6 +4,8 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import coil.load
+import com.example.recipes_app.R
 import com.example.recipes_app.databinding.ItemLibraryListBinding
 import com.example.recipes_app.presentation.model.RecipeUIO
 
@@ -26,6 +28,12 @@ class LibraryListAdapter :
         RecyclerView.ViewHolder(itemBinding.root) {
         fun bind(recipe: RecipeUIO) {
             itemBinding.tvRecipeName.text = recipe.name
+            val imgUrl = recipe.imgUrl
+            if (imgUrl != null) {
+                itemBinding.imgLibraryRecipe.load(recipe.imgUrl)
+            } else {
+                itemBinding.imgLibraryRecipe.load(R.drawable.icon_cook)
+            }
         }
     }
 

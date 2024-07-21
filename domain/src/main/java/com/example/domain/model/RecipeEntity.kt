@@ -7,6 +7,6 @@ data class RecipeEntity(
     val isFavorite: Boolean,
     val area: String?,
     val category: String?,
-    val img: String? = null,
+    val img: String,
     val youtubeUrl: String? = null
 )

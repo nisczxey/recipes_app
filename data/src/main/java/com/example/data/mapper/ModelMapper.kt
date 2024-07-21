@@ -12,7 +12,8 @@ fun RecipeEntity.toRecipeDbModel() = RecipeDbModel(
     instructions = instructions.toString(),
     isFavorite = isFavorite,
     area = area.toString(),
-    category = category.toString()
+    category = category.toString(),
+    imgUrl = img
 )
 
 fun RecipeDbModel.toRecipeEntity() = RecipeEntity(
@@ -22,6 +23,7 @@ fun RecipeDbModel.toRecipeEntity() = RecipeEntity(
     isFavorite = isFavorite,
     area = area,
     category = category,
+    img = imgUrl
 )
 
 fun Recipe.toRecipeEntity() = RecipeEntity(

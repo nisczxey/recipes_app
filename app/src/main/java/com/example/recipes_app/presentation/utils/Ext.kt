@@ -1,6 +1,7 @@
 package com.example.recipes_app.presentation.utils
 
 import android.content.Context
+import android.content.res.Resources
 import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.Fragment
@@ -28,3 +29,5 @@ fun View.visible() {
 fun View.inVisible() {
     this.visibility = View.GONE
 }
+
+fun Float.toPx(): Int = (this * Resources.getSystem().displayMetrics.density).toInt()
