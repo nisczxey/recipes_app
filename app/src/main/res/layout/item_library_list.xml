@@ -17,11 +17,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/recipe"
-        android:textSize="24sp"
+        android:textSize="20sp"
+        android:maxLines="1"
+        android:maxLength="17"
         android:textColor="@color/black"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toEndOf="@id/img_library_recipe"
-        android:layout_marginStart="24dp"/>
+        android:layout_marginStart="20dp"/>
 
     <TextView
         android:id="@+id/tv_recipe_status"
@@ -32,10 +34,10 @@
         app:layout_constraintStart_toStartOf="@id/tv_recipe_name"/>
 
     <ImageView
-        android:id="@+id/img_mark"
+        android:id="@+id/img_delete"
         android:layout_width="50dp"
         android:layout_height="match_parent"
-        android:src="@drawable/icon_bookmark"
+        android:src="@drawable/icon_delete"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
 

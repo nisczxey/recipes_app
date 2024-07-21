@@ -11,6 +11,7 @@ data class RecipeDbModel(
     val isFavorite: Boolean = false,
     val instructions: String,
     val category: String,
-    val area: String
+    val area: String,
+    val imgUrl: String
 )
 

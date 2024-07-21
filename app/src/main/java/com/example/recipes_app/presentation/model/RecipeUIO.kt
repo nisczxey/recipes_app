@@ -8,7 +8,7 @@ data class RecipeUIO(
     val instructions: String,
     val category: String,
     val area: String? = null,
-    val imgUrl: String? = null,
+    val imgUrl: String,
     val isFavorite: Boolean? = null,
     val videoUrl: String? = null
 )
