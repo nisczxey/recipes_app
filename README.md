@@ -1,5 +1,5 @@
 **project in development** :cat:
 
 screenshots:
-![](/screens/on_boarding.png)
-![](/screens/search.png)
+<img src="/screens/on_boarding.png" alt="On Boarding Screenshot" width="200"/>
+<img src="/screens/search.png" alt="Search Screenshot" width="200"/>
